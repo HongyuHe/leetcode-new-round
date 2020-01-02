@@ -1,11 +1,9 @@
-// Cycle detection: DFS 
-// backtracking before starting a new subroot!!! 
+// Cycle detection: DFS backtracking
 
 import java.util.*;
 
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        // build adjacency list
         if (numCourses == 1 || prerequisites.length == 0) {
             return true;
         }
@@ -19,40 +17,29 @@ class Solution {
 
         Set<Integer> visited = new HashSet<Integer>();
 
-        for (int[] pair : prerequisites) {
-            // visited.clear();
-            visited.add(pair[0]);
-
-            if (!dfsChecker(pair[1], adjList, visited)) {
+        for (int i = 0; i < numCourses; i++) {
+            if (!dfsChecker(i, adjList, visited))
                 return false;
-            }
-
-            visited.remove(pair[0]);
         }
-
         return true;
     }
 
     Boolean dfsChecker(int node, HashMap<Integer, ArrayList<Integer>> adjList, Set<Integer> visited) {
 
-        if (visited.contains(node)) {
+        if (visited.contains(node))
             return false;
-        }
 
         visited.add(node);
 
         ArrayList<Integer> adjNodes = adjList.getOrDefault(node, null);
-        if (adjNodes == null) {
-            visited.remove(node);
-            return true;
-        }
-
-        for (int adj : adjNodes) {
-            if (!dfsChecker(adj, adjList, visited)) {
-                return false;
+        if (adjNodes != null) {
+            for (int adj : adjNodes) {
+                if (!dfsChecker(adj, adjList, visited))
+                    return false;
             }
         }
-        visited.remove(node);
+
+        visited.remove(node); // backtracking
         return true;
     }
 }
