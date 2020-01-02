@@ -9,6 +9,7 @@
  * 1. look up the map find dst (bfs) 2. multiply all the weights 3. if there is
  * no path --> -1
  */
+import java.util.*;
 
 class Solution {
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {

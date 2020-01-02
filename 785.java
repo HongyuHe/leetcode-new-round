@@ -5,6 +5,7 @@
  * to do graph union where return false if any confliction happened 0 -> 1,3 {0}
  * {1,3}
  */
+import java.util.*;
 
 class Solution {
     public boolean isBipartite(int[][] graph) {
