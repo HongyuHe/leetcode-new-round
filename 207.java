@@ -18,7 +18,7 @@ class Solution {
         Set<Integer> visited = new HashSet<Integer>();
 
         for (int i = 0; i < numCourses; i++) {
-            if (!dfsChecker(i, adjList, visited))
+            if (!dfsChecker(i, adjList, visited)) // the graph could be dejoint, so we traverse every node.
                 return false;
         }
         return true;
@@ -30,16 +30,19 @@ class Solution {
             return false;
 
         visited.add(node);
-
-        ArrayList<Integer> adjNodes = adjList.getOrDefault(node, null);
-        if (adjNodes != null) {
-            for (int adj : adjNodes) {
-                if (!dfsChecker(adj, adjList, visited))
+        ArrayList<Integer> neighbors = adjList.getOrDefault(node, null);
+        if (neighbors != null) {
+            for (int neighbor : neighbors) {
+                if (!dfsChecker(neighbor, adjList, visited))
                     return false;
             }
         }
+        visited.remove(node); // if succeed, backtrack ONE step
 
-        visited.remove(node); // backtracking
+        /*
+         * backtracking scenario: [1,2], [2,3], [3,4], [5,2] or
+         */
+
         return true;
     }
 }
