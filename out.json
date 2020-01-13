@@ -1,31 +1,26 @@
 [
     {
-        "id": "14",
-        "picker_name": "Joris",
-        "active_since": "2018-09-20T08:20:00Z",
-        "picks": [
-            {
-                "id": "13473",
-                "articleName": "ACME BANANAS",
-                "timeStamp": "2018-12-20T11:50:48Z"
-            },
-            {
-                "id": "41459",
-                "articleName": "ACME APPLES",
-                "timeStamp": "2018-12-20T11:51:00Z"
-            }
-        ]
+      "picker_name": "Joris",
+      "active_since": "2018-09-20T08:20:00Z",
+      "picks": [
+        {
+          "article_name": "ACME BANANAS",
+          "time_stamp": "2018-12-20T11:50:48Z"
+        },
+        {
+          "article_name": "ACME APPLES",
+          "time_stamp": "2018-12-20T11:51:00Z"
+        }
+      ]
     },
     {
-        "id": "15",
-        "picker_name": "Jan",
-        "active_since": "2018-11-14T08:20:15Z",
-        "picks": [
-            {
-                "id": "13473",
-                "articleName": "ACME BANANAS",
-                "timeStamp": "2018-12-20T11:50:49Z"
-            }
-        ]
+      "picker_name": "Jan",
+      "active_since": "2018-11-14T08:20:15Z",
+      "picks": [
+        {
+          "article_name": "ACME BANANAS",
+          "time_stamp": "2018-12-20T11:50:49Z"
+        }
+      ]
     }
-]
+  ]
