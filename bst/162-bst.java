@@ -7,7 +7,7 @@
     [1,3,4,10,3,5,6,4,1,2,3,1]
 */
 
-// good binary search
+// good binary search (MIT): https://courses.csail.mit.edu/6.006/spring11/lectures/lec02.pdf
 
 class Solution {
     public:
