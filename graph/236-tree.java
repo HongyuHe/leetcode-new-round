@@ -8,7 +8,9 @@
  * }
  */
 
-// takeaway: compute the common ancestor for 2 tree nodes
+// takeaway: 
+//  1. compute the common ancestor for 2 tree nodes by tracking path using set and taking intersection 
+//  2. a more amazing way: check to children => true, true (https://leetcode.com/articles/lowest-common-ancestor-of-a-binary-tree/) 
 
 class Solution {
     
