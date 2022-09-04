@@ -3,6 +3,7 @@ class Solution:
         cache = [-1]*len(nums)
         
         def rob_the_rest(start):
+            #* Guard.
             if start >= len(nums): return 0
             
             #* Memorisation.
