@@ -1,17 +1,21 @@
+'''
+Critcical edge case: len(nums)==2
+    * If `m` takes the floor, i.e., m = (l+r) // 2: 
+'''
 class Solution:
-    def search(self, nums: List[int], target: int) -> int:
-        l, h = 0, len(nums)-1
+    def search(self, nums, target: int) -> int:
+        l, r = 0, len(nums)-1
 
         #%assert loop invariant
-        while l < h:
-            #%assert nums[<l]: < target & nums[>=h]: >= target 
-            m = (l+h) // 2
+        while l < r:
+            #%assert nums[<l]: < target & nums[>=r]: >= target 
+            m = (l+r) // 2
             
-            if nums[m] < target:
+            if target > nums[m]:
                 l = m + 1
             else:
-                h = m
+                r = m
                 
         return l if nums[l] == target else -1
-            
         
+         
