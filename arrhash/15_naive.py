@@ -10,7 +10,7 @@ class Solution:
             for j, x in enumerate(nums[i+1: ]):
                 diff = target - x
                 if diff in hash_table:
-                    k = hash_table[diff]
-                    result.add(tuple(sorted([n, x, nums[k]])))
+                    index = hash_table[diff]
+                    result.add(tuple(sorted([n, x, nums[index]])))
                 hash_table[x] = j+i+1
         return result
