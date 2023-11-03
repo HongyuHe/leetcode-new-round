@@ -1,5 +1,5 @@
 class Solution:
-    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+    def twoSum(self, numbers: List[int], target: int):
         #* Two-pointer problem
         #* Space: O(1); Time: O(n)
         leftptr = 0
@@ -7,6 +7,7 @@ class Solution:
         total = numbers[leftptr] + numbers[rightptr]
 
         #* Solutioin is guaranteed to exist.
+        #* And the numbers are sorted in ascending order.
         while leftptr < rightptr:
             if total < target:
                 leftptr += 1

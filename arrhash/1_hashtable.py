@@ -1,5 +1,5 @@
 class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
+    def twoSum(self, nums: List[int], target: int):
         ## Two nums can add to `target` -> guaranteed
         ## (1) Loop through the `nums`
         ## (2) Construct a hash table: num -> index
