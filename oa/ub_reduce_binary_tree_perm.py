@@ -1,3 +1,6 @@
+"""https://leetcode.com/discuss/interview-question/4350883/Uber-OA
+"""
+
 from typing import *
 
 
@@ -27,6 +30,9 @@ def create_binary_tree(tree):
 
 def generate_permutations(root: 'Node'):
   """Backtracking
+      3
+    7   9
+  12 17 16 15
   """
   perms = []
   
@@ -40,7 +46,7 @@ def generate_permutations(root: 'Node'):
     
     perms.append( traverse_bfs(root) )
     get_perm(node.left)
-    get_perm(node.right)
+    get_perm(node.right)    
     
     swap_children(node)
     perms.append( traverse_bfs(root) )
@@ -93,6 +99,6 @@ def traverse_inorder(root: 'Node'):
 if __name__ == '__main__':
   tree1 = [3,7,9,12,17,16,15]
   root = create_binary_tree(tree1)
-  print("Inorder:", traverse_inorder(root))
-  print("BFS:\t", traverse_bfs(root))
+  # print("Inorder:", traverse_inorder(root))
+  # print("BFS:\t", traverse_bfs(root))
   print(len(generate_permutations(root)))
