@@ -29,37 +29,38 @@ def create_binary_tree(tree):
   return get_node(0)
 
 def generate_permutations(root: 'Node'):
-  """Backtracking
-      3
-    7   9
+  """
+       3
+    7     9
   12 17 16 15
   """
-  perms = []
+  def make_subtree(node: 'Node', left: 'Node', right: 'Node'):
+    s = Node(node.data)
+    s.left = left
+    s.right = right
+    return s
   
-  def swap_children(node: 'Node'):
-    node.left, node.right = node.right, node.left
-  
-  def get_perm(node: 'Node'):
+  def get_perms(node: 'Node'):
     #* Base case
     if not node.left and not node.right:
-      return 
+      return [node]
     
-    perms.append( traverse_bfs(root) )
-    get_perm(node.left)
-    get_perm(node.right)    
+    left_perms = get_perms(node.left)
+    right_perms = get_perms(node.right)
     
-    swap_children(node)
-    perms.append( traverse_bfs(root) )
-    get_perm(node.left)
-    get_perm(node.right)
-    #* Backtrack
-    swap_children(node)
-  
-  #TODO: Dedupe
-  get_perm(root)
-  for perm in perms:
+    perms = []
+    #* Get the cartesian products
+    for left_subtree in left_perms:
+      for right_subtree in right_perms:
+        #* For each permutation combo, there are two kinds of attachments
+        perms.append( make_subtree(node, left=left_subtree, right=right_subtree) )
+        perms.append( make_subtree(node, left=right_subtree, right=left_subtree) )
+    return perms
+    
+  permutations = [traverse_bfs(perm) for perm in get_perms(root)]
+  for perm in permutations:
     print(perm)
-  return [create_binary_tree(perm) for perm in perms]
+  return permutations
     
 
 def reduce_sum_permutations():
