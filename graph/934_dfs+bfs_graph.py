@@ -1,7 +1,7 @@
 class Solution:
     def shortestBridge(self, grid: List[List[int]]):
         """
-        Shortest path with multiple srcs and dests -> Bellman ford/Dijkstra
+        Shortest path with multiple srcs and dests
         [1,1,0,0,0],
         [1,1,0,0,1],
         [1,0,0,0,1],
@@ -49,32 +49,25 @@ class Solution:
         #* Collect locations of the first island
         dfs(start)
 
-        tried = set()
-        def find_island2(loc, steps):
-            if steps < 0 or not in_grid(loc) or (loc, steps) in tried:
-                return False
-            if grid[loc[0]][loc[1]] and loc not in island1:
-                return True
-            else:
-                for i,j in moves:
-                    new_loc = (loc[0]+i, loc[1]+j)
-                    if find_island2(new_loc, steps-1):
-                        return True
-                    else:
-                        tried.add((new_loc, steps-1))
-
-        radius = 1
-        while radius <= N:
-            for loc in island1:
+        #* BFS from the first island.
+        queue = list(island1)
+        visited = island1.copy()
+        steps = 0
+        while steps < N:
+            new_queue = []
+            while queue:
+                loc = queue.pop(0)
                 for i, j in moves:
                     new_loc = (loc[0]+i, loc[1]+j)
-                    if (new_loc, radius) in tried:
+                    if not in_grid(new_loc) or new_loc in visited:
                         continue
-                    if find_island2(new_loc, radius):
-                        return radius
+                    if grid[new_loc[0]][new_loc[1]]:
+                        return steps
                     else:
-                        tried.add((new_loc, radius))
-            radius += 1
+                        visited.add(new_loc)
+                        new_queue.append(new_loc)
+            steps += 1
+            queue = new_queue
 
         return 0
             
