@@ -1,5 +1,5 @@
 class Solution:
-    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+    def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int):
         from collections import defaultdict
         import heapq as hq
         """
@@ -21,19 +21,20 @@ class Solution:
         while minheap:
           w, s, d, radius = hq.heappop(minheap)
           print(f"Popped {(w, s, d, radius)}")
-          if radius > k:
+          if d in visited or radius > k:
             continue
           visited.add(d)
           print(f"Visited {d=}")
           #* Update the distance to d
-          distances[d] = min(distances[d], distances[s]+w)
+          distances[d] = min(w, distances[d])
           if d == dst:
             return distances[d]
 
           #* Include all its neighbors
           for w, s, d, _ in adjlist[d]:
-            if d not in visited:
-              hq.heappush(minheap, (w, s, d, radius+1) )
-              print(f"Pushed {(w, s, d, radius+1)}")
+            #! Push the distance to the src, not the distance to the neighbor!
+            distance = w + distances[s]
+            hq.heappush(minheap, (distance, s, d, radius+1) )
+            print(f"Pushed {(distance, s, d, radius+1)}")
 
         return -1
