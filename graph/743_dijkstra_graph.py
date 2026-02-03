@@ -1,5 +1,5 @@
 class Solution:
-    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
+    def networkDelayTime(self, times: List[List[int]], n: int, k: int):
       """
       Shortest path without constraints -> Dijkstra
       • Disconnected graph, return -1
