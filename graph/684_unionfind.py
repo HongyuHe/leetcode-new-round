@@ -8,7 +8,8 @@ class Solution:
 
         Complexity
             * Time: 3 x N x logN -> O(NlogN) where N is #nodes
-            * Space: N -> O(1)
+                ! No, without path compression, the time complexity is O(N^2) in the worst case, when the graph is a chain. With path compression, it can be reduced to O(N log N) or even O(N) in practice.
+            * Space: N -> O(N) where N is #nodes, recursion stack and predecessors array.
         """
         predecessors = [n for n in range(len(edges)+1)]
 
